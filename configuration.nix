@@ -14,13 +14,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nics"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/Moscow";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -50,31 +50,77 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+  sound.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    # alsa.enable = true;
+    # alsa.support32Bit = true;
+    pulse.enable = true;
+    # jack.enable
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.alice = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     tree
-  #   ];
+  users.users.buff = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [
+      tree
+    ];
+  };
+
+  programs.firefox.enable = true;
+  programs.hyprland {
+    enable = true;
+    # nvidiaPatches = true;
+    xwayland.enable = true;
+  };
+
+  # environment.sessionVariables = {
+  #   If your cursor becomes invisible
+  #   WLR_NO_HARDWARE_CURSORS = "1";
+  #   Hint electron apps to use wayland
+  #   NIXOS_OZONE_WL = "1";
   # };
 
-  # programs.firefox.enable = true;
+  # waybar
+  # (pkgs.waybar.overrideAttrs (oldAttrs: {
+  #     mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+  #   })
+  # )
+
+  # XDG portal
+  # xdg.portal.enable = true;
+  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+  # hardware = {
+    # Opengl
+  #   opengl.enable = true;
+
+    # Most wayland compositors need this
+  #   nvidia.modesetting.enable = true;
+  # };
+
+  # bind = $mainMod, S, exec, rofi -show drun -show-icons
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
+  environment.systemPackages = with pkgs; [
+    kitty
+    waybar
+    # eww
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    dunst
+    libnotify
+ 
+    helix
+    rustup
+    yt-dlp
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -87,7 +133,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
