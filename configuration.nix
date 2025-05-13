@@ -73,7 +73,7 @@
   };
 
   programs.firefox.enable = true;
-  programs.hyprland {
+  programs.hyprland = {
     enable = true;
     # nvidiaPatches = true;
     xwayland.enable = true;
