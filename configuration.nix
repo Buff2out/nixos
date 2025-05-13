@@ -87,7 +87,27 @@
     # nvidiaPatches = true;
     xwayland.enable = true;
   };
+  # Автозапуск Hyprland как пользовательского сервиса
+  systemd.user.services.hyprland = {
+    description = "Hyprland Wayland compositor";
+    script = "${pkgs.hyprland}/bin/Hyprland";
+    restartIfChanged = true;
+    wantedBy = [ "default.target" ];
+  };
 
+  environment.systemPackages = with pkgs; [
+    hyprland
+    
+    xwayland
+    kitty
+    waybar
+    # eww
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    dunst
+    libnotify
+    helix
+  ];
   # environment.sessionVariables = {
   #   If your cursor becomes invisible
   #   WLR_NO_HARDWARE_CURSORS = "1";
@@ -117,19 +137,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    hyprland
-    
-    xwayland
-    kitty
-    waybar
-    # eww
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    dunst
-    libnotify
-    helix
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
