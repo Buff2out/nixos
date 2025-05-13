@@ -67,8 +67,17 @@
   users.users.buff = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  #   services.user.services.hyprland = {
+  #     description = "Hyprland Wayland compositor";
+  #     script = "${pkgs.hyprland}/bin/Hyprland";
+  #     restartIfChanged = true;
+  #     wantedBy = [ "default.target" ];
+  #   };
     packages = with pkgs; [
       tree
+      rustup
+      yt-dlp
+      git
     ];
   };
 
@@ -109,6 +118,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    hyprland
+    
+    xwayland
     kitty
     waybar
     # eww
@@ -116,10 +128,7 @@
     wget
     dunst
     libnotify
- 
     helix
-    rustup
-    yt-dlp
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
