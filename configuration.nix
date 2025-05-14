@@ -81,6 +81,7 @@
     ];
   };
 
+  
   programs.firefox.enable = true;
   programs.hyprland = {
     enable = true;
@@ -99,7 +100,8 @@
     hyprland
     
     xwayland
-    kitty
+    # kitty
+    
     waybar
     # eww
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -108,12 +110,13 @@
     libnotify
     helix
   ];
-  # environment.sessionVariables = {
-  #   If your cursor becomes invisible
-  #   WLR_NO_HARDWARE_CURSORS = "1";
-  #   Hint electron apps to use wayland
-  #   NIXOS_OZONE_WL = "1";
-  # };
+  environment.sessionVariables = {
+    # If your cursor becomes invisible
+    WLR_NO_HARDWARE_CURSORS = "1";
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+    GLFW_BACKEND = "wayland"; # Явное указание бэкенда для Kitty
+  };
 
   # waybar
   # (pkgs.waybar.overrideAttrs (oldAttrs: {
