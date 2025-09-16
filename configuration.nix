@@ -103,115 +103,71 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    # Браузеры
-    firefox
-    chromium
-    librewolf
-
-    # Редакторы
-    code-desktop # Code-OSS в Nixpkgs
-    vim
-    nano
-    helix
-    kate
-
-    # Мультимедиа
-    vlc
-    gimp
-    blender
-    audacity
-    lmms
-    obs-studio
-
-    # Офис
-    libreoffice-fresh
-
-    # Утилиты
-    htop
-    btop
-    git
-    wget
-    curl
-    tree
-    zip
-    unzip
-    fzf
-    zoxide
-    jq
-    bc
-    less
-
-    # Терминал
-    konsole
-    nushell
-
-    # Файловый менеджер
-    dolphin
-    ark
-    gwenview
-
-    # Скриншоты
-    spectacle
-
-    # Безопасность
-    keepassxc
-
-    # Сеть
-    telegram-desktop
-    qbittorrent
-    postman
-    torbrowser-launcher
-    rocketchat-desktop
-    hiddify-next-bin
-
-    # Разработка
-    go
-    rustc
-    cargo
-    rust-src
-    cmake
-    gcc
-    gdb
-    valgrind
-    doxygen
-    lcov
-    cppcheck
-    maven
-    jdk17
-    python3
-    python3Packages.pip
-    python3Packages.mutagen
-
-    # Система
-    docker
-    podman
-    podman-compose
-    virt-manager
-    qemu
-    dnsmasq
-    iwd
-    openvpn
-    nmap
-    stress-ng
-
-    # Аудио/видео
-    pipewire
-    wireplumber
-    gst-plugin-pipewire
-
-    # Шрифты
-    noto-fonts-cjk
-
-    # Другое
-    anytype-bin
-    lapce
-    luakit
-    msr-tools
-    powertop
-    smartmontools
-    yt-dlp
-  ];
+environment.systemPackages = with pkgs; [
+  firefox
+  chromium
+  code-desktop
+  gimp
+  libreoffice-fresh
+  telegram-desktop
+  vlc
+  obs-studio
+  keepassxc
+  qbittorrent
+  blender
+  audacity
+  lmms
+  helix
+  kate
+  dolphin
+  konsole
+  ark
+  gwenview
+  spectacle
+  htop
+  btop
+  git
+  vim
+  nano
+  wget
+  curl
+  tree
+  zip
+  unzip
+  jq
+  fzf
+  zoxide
+  go
+  rustc
+  cargo
+  cmake
+  gcc
+  gdb
+  valgrind
+  doxygen
+  maven
+  jdk17
+  python3
+  python3Packages.pip
+  docker
+  podman
+  virt-manager
+  qemu
+  dnsmasq
+  openvpn
+  nmap
+  stress-ng
+  pipewire
+  wireplumber
+  gst-plugin-pipewire
+  noto-fonts-cjk
+  anytype-bin
+  lapce
+  msr-tools
+  powertop
+  smartmontools
+  yt-dlp
+];
 
   # NVIDIA
   services.xserver.videoDrivers = [ "nvidia" ];
