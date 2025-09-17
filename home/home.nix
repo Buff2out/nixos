@@ -19,6 +19,7 @@
     helix
     starship
     atuin
+    fish
   ];
 
   home.sessionVariables = {
@@ -69,6 +70,30 @@
     };
   };
 
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      hxroot = "sudo hx /etc/nixos/configuration.nix";
+      nxr = "sudo nixos-rebuild switch";
+      hxhome = "hx ${config.home.homeDirectory}/nix-config/home/home.nix";
+      nxh = "home-manager switch --flake ${config.home.homeDirectory}/nix-config/home";
+      
+      find = "fd";
+      fd = "fd";
+      
+      grep = "rg";
+      rg = "rg";
+      
+      cd = "z";
+      z = "zoxide";
+      
+      ls = "eza";                    
+      ll = "eza -la";                
+      lt = "eza --tree";             
+      cat = "bat";                   
+    };
+  };
+
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
@@ -77,7 +102,7 @@
       directory = {
         truncation_length = 0;  # 0 = показывать полный путь
         truncate_to_repo = false;
-        style = "green";
+        style = "bold yellow";
       };
       
       # Остальные настройки

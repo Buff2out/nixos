@@ -257,7 +257,7 @@
 
     # shell terminal
     nushell
-    zsh
+    fish
 
     keepassxc
 
