@@ -5,6 +5,34 @@
 { config, lib, pkgs, ... }:
 
 {
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      size = 32 * 1024;
+    }
+  ];
+
+  fileSystems."/".options = [ "compress=zstd" "noatime" ];
+
+  systemd.services."create-swapfile" = {
+    description = "Create Btrfs swapfile";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "local-fs.target" ];
+    requires = [ "local-fs.target" ];
+    unitConfig = {
+      ConditionPathExists = "!/swap/swapfile";
+    };
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      mkdir -p /swap
+      ${pkgs.btrfs-progs}/bin/btrfs filesystem mkswapfile --size 32g /swap/swapfile
+      chmod 0600 /swap/swapfile
+    '';
+  };
+
   nixpkgs.config.allowUnfree = true;
   imports =
     [ # Include the results of the hardware scan.
