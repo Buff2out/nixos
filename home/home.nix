@@ -20,6 +20,7 @@
     starship
     atuin
     fish
+    sing-box
   ];
 
   home.sessionVariables = {

@@ -266,7 +266,6 @@
 
     tor-browser
     rocketchat-desktop
-    hiddify-app
 
     # develop
     clang-tools
@@ -293,7 +292,9 @@
     gcovr
     python3Packages.mutagen
 
-    # Система
+    # Система networking
+    sing-box
+
     # ipset
     # nftables
     # ipcalc
