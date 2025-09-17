@@ -92,6 +92,9 @@
       lt = "eza --tree";             
       cat = "bat";                   
     };
+    interactiveShellInit = ''
+      zoxide init fish | source
+    '';
   };
 
   programs.starship = {
