@@ -254,6 +254,7 @@
     libreoffice-qt6-fresh
 
     # Utils
+    ffmpeg_6-full
     atuin
     fzf
     eza
