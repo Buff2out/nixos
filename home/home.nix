@@ -134,10 +134,6 @@
       # Поведение
       enter_accept = true;  # Enter выбирает команду
       fuzzy = true;         # нечеткий поиск
-      history_filter = [
-        "secret*"
-        "*password*"
-      ];  # фильтрация чувствительных команд
     };
   };
 }
