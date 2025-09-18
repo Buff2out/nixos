@@ -254,7 +254,7 @@
     libreoffice-qt6-fresh
 
     # Utils
-    ffmpeg_6-full
+    ffmpeg_8-full
     atuin
     fzf
     eza
@@ -334,7 +334,7 @@
     # qemu
     dnsmasq
     iwd # Wireless daemon for Linux
-    openvpn
+    # openvpn
     nmap
     # stress-ng # Stress test a computer system
 

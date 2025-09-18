@@ -39,6 +39,7 @@
         vadimcn.vscode-lldb
         formulahendry.code-runner
         esbenp.prettier-vscode
+        mechatroner.rainbow-csv
       ];
     };
   };
@@ -102,14 +103,12 @@
     enable = true;
     enableBashIntegration = true;
     settings = {
-      # Настройка директории для показа полного пути
       directory = {
         truncation_length = 0;  # 0 = показывать полный путь
         truncate_to_repo = false;
         style = "bold yellow";
       };
       
-      # Остальные настройки
       format = "$all";
       character = {
         success_symbol = "[❯](bold green)";
