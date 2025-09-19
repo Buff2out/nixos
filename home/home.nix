@@ -32,14 +32,16 @@
     package = pkgs.vscode;
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
+        esbenp.prettier-vscode
+        formulahendry.code-runner
         llvm-vs-code-extensions.vscode-clangd
         mhutchie.git-graph
         # robbowen.synthwave-vscode
         rust-lang.rust-analyzer
         vadimcn.vscode-lldb
-        formulahendry.code-runner
-        esbenp.prettier-vscode
+        # donjayamanne.gith
         mechatroner.rainbow-csv
+        bradlc.vscode-tailwindcss
       ];
     };
   };
@@ -52,7 +54,7 @@
     '';
     shellAliases = {
       hxroot = "sudo hx /etc/nixos/configuration.nix";
-      nxr = "sudo nixos-rebuild switch";
+      nxr = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix-config/";
       hxhome = "hx ${config.home.homeDirectory}/nix-config/home/home.nix";
       nxh = "home-manager switch --flake ${config.home.homeDirectory}/nix-config/home";
       
@@ -76,7 +78,7 @@
     enable = true;
     shellAliases = {
       hxroot = "sudo hx /etc/nixos/configuration.nix";
-      nxr = "sudo nixos-rebuild switch";
+      nxr = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix-config/";
       hxhome = "hx ${config.home.homeDirectory}/nix-config/home/home.nix";
       nxh = "home-manager switch --flake ${config.home.homeDirectory}/nix-config/home";
       

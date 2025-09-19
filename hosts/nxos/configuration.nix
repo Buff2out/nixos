@@ -5,6 +5,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
   swapDevices = [
     {
       device = "/swap/swapfile";
@@ -33,7 +34,6 @@
     '';
   };
 
-  nixpkgs.config.allowUnfree = true;
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -370,6 +370,19 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.power-profiles-daemon.enable = false;
+  services.tlp = {
+    enable = true;
+    settings = {
+      # Установите пороги зарядки (пример для ThinkPad, значения могут отличаться)
+      START_CHARGE_THRESH_BAT0 = 75;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+      
+      # Если две батареи (для ThinkPad)
+      # START_CHARGE_THRESH_BAT1 = 75;
+      # STOP_CHARGE_THRESH_BAT1 = 80;
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
