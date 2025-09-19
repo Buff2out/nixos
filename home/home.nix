@@ -6,12 +6,6 @@ let
     nxr = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix-config/";
     hxhome = "hx ${config.home.homeDirectory}/nix-config/home/home.nix";
     
-    find = "fd";
-    fd = "fd";
-    
-    grep = "rg";
-    rg = "rg";
-    
     cd = "z";
     z = "zoxide";
     
@@ -52,6 +46,7 @@ in
     package = pkgs.vscode;
     mutableExtensionsDir = true;  # Эта опция должна помочь
     extensions = with pkgs.vscode-extensions; [
+      # mkhl.direnv
       ms-vscode.cmake-tools
       jnoortheen.nix-ide
       esbenp.prettier-vscode

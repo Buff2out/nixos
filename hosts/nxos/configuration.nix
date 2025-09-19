@@ -214,6 +214,8 @@
 
     clang
     clang-tools
+    yazi
+    # direnv
     nodejs_24
     gnumake
     rustup
