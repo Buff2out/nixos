@@ -1,5 +1,27 @@
 { config, pkgs, ... }:
 
+let
+  commonAliases = {
+    hxroot = "sudo hx /etc/nixos/configuration.nix";
+    nxr = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix-config/";
+    hxhome = "hx ${config.home.homeDirectory}/nix-config/home/home.nix";
+    nxh = "home-manager switch --flake ${config.home.homeDirectory}/nix-config/home";
+    
+    find = "fd";
+    fd = "fd";
+    
+    grep = "rg";
+    rg = "rg";
+    
+    cd = "z";
+    z = "zoxide";
+    
+    ls = "eza";                    
+    ll = "eza -la";                
+    lt = "eza --tree";             
+    cat = "bat";                   
+  };
+in
 {
   home.username = "wave";
   home.homeDirectory = "/home/wave";
@@ -54,50 +76,12 @@
     initExtra = ''
       eval "$(zoxide init bash)"
     '';
-    shellAliases = {
-      hxroot = "sudo hx /etc/nixos/configuration.nix";
-      nxr = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix-config/";
-      hxhome = "hx ${config.home.homeDirectory}/nix-config/home/home.nix";
-      nxh = "home-manager switch --flake ${config.home.homeDirectory}/nix-config/home";
-      
-      find = "fd";
-      fd = "fd";
-      
-      grep = "rg";
-      rg = "rg";
-      
-      cd = "z";
-      z = "zoxide";
-      
-      ls = "eza";                    
-      ll = "eza -la";                
-      lt = "eza --tree";             
-      cat = "bat";                   
-    };
+    shellAliases = commonAliases;
   };
 
   programs.fish = {
     enable = true;
-    shellAliases = {
-      hxroot = "sudo hx /etc/nixos/configuration.nix";
-      nxr = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix-config/";
-      hxhome = "hx ${config.home.homeDirectory}/nix-config/home/home.nix";
-      nxh = "home-manager switch --flake ${config.home.homeDirectory}/nix-config/home";
-      
-      find = "fd";
-      fd = "fd";
-      
-      grep = "rg";
-      rg = "rg";
-      
-      cd = "z";
-      z = "zoxide";
-      
-      ls = "eza";                    
-      ll = "eza -la";                
-      lt = "eza --tree";             
-      cat = "bat";                   
-    };
+    shellAliases = commonAliases;
     interactiveShellInit = ''
       zoxide init fish | source
     '';
@@ -108,7 +92,7 @@
     enableBashIntegration = true;
     settings = {
       directory = {
-        truncation_length = 0;  # 0 = показывать полный путь
+        truncation_length = 0;
         truncate_to_repo = false;
         style = "bold yellow";
       };
@@ -127,16 +111,11 @@
     
     settings = {
       dialect = "us";
-      style = "compact";  # стиль отображения результатов
-      inline_height = 20;  # высота inline окна
+      style = "compact";
+      inline_height = 20;
       
-      # Настройки синхронизации (опционально)
-      # sync_address = "https://api.atuin.sh";
-      # sync_frequency = "10m";  # частота синхронизации
-      
-      # Поведение
-      enter_accept = true;  # Enter выбирает команду
-      fuzzy = true;         # нечеткий поиск
+      enter_accept = true;
+      fuzzy = true;
     };
   };
 }
