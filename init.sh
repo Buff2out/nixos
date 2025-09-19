@@ -9,5 +9,4 @@ sudo cp -rf ~/nix-config/hosts/nxos/hardware-configuration.nix /etc/nixos/
 sudo ln -sf ~/nix-config/hosts/nxos/configuration.nix /etc/nixos/configuration.nix
 sudo ln -sf ~/nix-config/hosts/nxos/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
 
-sudo nixos-rebuild switch
-home-manager switch --flake ~/nix-config/home
+sudo nixos-rebuild switch .
