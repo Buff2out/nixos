@@ -32,7 +32,9 @@
     package = pkgs.vscode;
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
         esbenp.prettier-vscode
+        davidanson.vscode-markdownlint
         formulahendry.code-runner
         llvm-vs-code-extensions.vscode-clangd
         mhutchie.git-graph
