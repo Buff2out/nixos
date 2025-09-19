@@ -5,7 +5,7 @@ let
     hxroot = "sudo hx /etc/nixos/configuration.nix";
     nxr = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix-config/";
     hxhome = "hx ${config.home.homeDirectory}/nix-config/home/home.nix";
-    nxh = "home-manager switch --flake ${config.home.homeDirectory}/nix-config/home";
+    nxh = "home-manager switch --flake ${config.home.homeDirectory}/nix-config/";
     
     find = "fd";
     fd = "fd";
@@ -26,9 +26,7 @@ in
   home.username = "wave";
   home.homeDirectory = "/home/wave";
   home.stateVersion = "25.05";
-
-  nixpkgs.config.allowUnfree = true;
-
+  
   home.packages = with pkgs; [
     fd
     ripgrep
