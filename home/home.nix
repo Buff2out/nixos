@@ -51,18 +51,19 @@ in
     package = pkgs.vscode;
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
-        jnoortheen.nix-ide
-        esbenp.prettier-vscode
-        davidanson.vscode-markdownlint
-        formulahendry.code-runner
-        llvm-vs-code-extensions.vscode-clangd
-        mhutchie.git-graph
-        # robbowen.synthwave-vscode
-        rust-lang.rust-analyzer
-        vadimcn.vscode-lldb
-        # donjayamanne.gith
-        mechatroner.rainbow-csv
-        bradlc.vscode-tailwindcss
+        ms-vscode.cmake-tools # cmake
+        jnoortheen.nix-ide # nix
+        esbenp.prettier-vscode # prettier
+        davidanson.vscode-markdownlint # .md
+        formulahendry.code-runner # code-runner
+        llvm-vs-code-extensions.vscode-clangd # clangd
+        mhutchie.git-graph # git graph
+        # robbowen.synthwave-vscode # synthwave theme
+        rust-lang.rust-analyzer # rust analyzer
+        vadimcn.vscode-lldb # debugger lldb
+        # donjayamanne.gith # git history
+        mechatroner.rainbow-csv # support csv
+        bradlc.vscode-tailwindcss # css intellisence
       ];
     };
   };
