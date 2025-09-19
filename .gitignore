@@ -1,1 +1,10 @@
 log.txt
+/target
+Cargo.lock
+Cargo.toml
+log_success.txt
+prompt.md
+src/main.rs
+log-err.txt
+success_log.txt
+err-log.txt

@@ -10,6 +10,11 @@
   ];
 
   fileSystems."/".options = [ "compress=zstd" "noatime" ];
+  fileSystems."/home" =
+  { device = "/dev/disk/by-uuid/662b4ff3-92c7-45fc-ab40-79b140d051b0";
+    fsType = "btrfs";
+    options = [ "subvol=@home" "rw" "relatime" ];  # Добавьте rw и relatime
+  };
 
   systemd.services."create-swapfile" = {
     description = "Create Btrfs swapfile";
@@ -167,7 +172,7 @@
 
     libreoffice-qt6-fresh
 
-    ffmpeg_8-full
+    ffmpeg
     atuin
     fzf
     eza
@@ -207,9 +212,9 @@
     tor-browser
     rocketchat-desktop
 
+    clang
     clang-tools
     nodejs_24
-    vscode
     gnumake
     rustup
     cargo

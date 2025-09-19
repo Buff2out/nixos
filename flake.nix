@@ -30,7 +30,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.wave = import ./home/home.nix;
+              users.wave = import ./home/home.nix;  # Вот здесь подключается home.nix
             };
           }
         ];

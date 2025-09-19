@@ -22,6 +22,7 @@ let
   };
 in
 {
+  nixpkgs.config.allowUnfree = true;
   home.username = "wave";
   home.homeDirectory = "/home/wave";
   home.stateVersion = "25.05";
@@ -49,23 +50,20 @@ in
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
-    profiles.default = {
-      extensions = with pkgs.vscode-extensions; [
-        ms-vscode.cmake-tools # cmake
-        jnoortheen.nix-ide # nix
-        esbenp.prettier-vscode # prettier
-        davidanson.vscode-markdownlint # .md
-        formulahendry.code-runner # code-runner
-        llvm-vs-code-extensions.vscode-clangd # clangd
-        mhutchie.git-graph # git graph
-        # robbowen.synthwave-vscode # synthwave theme
-        rust-lang.rust-analyzer # rust analyzer
-        vadimcn.vscode-lldb # debugger lldb
-        # donjayamanne.gith # git history
-        mechatroner.rainbow-csv # support csv
-        bradlc.vscode-tailwindcss # css intellisence
-      ];
-    };
+    mutableExtensionsDir = true;  # Эта опция должна помочь
+    extensions = with pkgs.vscode-extensions; [
+      ms-vscode.cmake-tools
+      jnoortheen.nix-ide
+      esbenp.prettier-vscode
+      davidanson.vscode-markdownlint
+      formulahendry.code-runner
+      llvm-vs-code-extensions.vscode-clangd
+      mhutchie.git-graph
+      rust-lang.rust-analyzer
+      vadimcn.vscode-lldb
+      mechatroner.rainbow-csv
+      bradlc.vscode-tailwindcss
+    ];
   };
 
   programs.bash = {
