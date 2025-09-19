@@ -17,13 +17,12 @@
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
       pkgs-stable = nixpkgs-stable.legacyPackages.${system};
     in
     {
       nixosConfigurations.nxos = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit pkgs pkgs-stable; };
+        specialArgs = { inherit pkgs-stable; };
         modules = [
           ./hosts/nxos/configuration.nix
           home-manager.nixosModules.home-manager
@@ -35,12 +34,6 @@
             };
           }
         ];
-      };
-      
-      # Экспортируем home-конфигурацию для standalone использования
-      homeConfigurations.wave = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;  # Добавляем pkgs
-        modules = [ ./home/home.nix ];
       };
     };
 }

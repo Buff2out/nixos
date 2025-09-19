@@ -5,7 +5,6 @@ let
     hxroot = "sudo hx /etc/nixos/configuration.nix";
     nxr = "sudo nixos-rebuild switch --flake ${config.home.homeDirectory}/nix-config/";
     hxhome = "hx ${config.home.homeDirectory}/nix-config/home/home.nix";
-    nxh = "home-manager switch --flake ${config.home.homeDirectory}/nix-config/";
     
     find = "fd";
     fd = "fd";
