@@ -12,7 +12,10 @@ let
     ls = "eza";                    
     ll = "eza -la";                
     lt = "eza --tree";             
-    cat = "bat";                   
+    cat = "bat";
+
+    cdev = "bash ${config.home.homeDirectory}/nix-config/scripts/cdev.sh";
+    cppdev = "bash ${config.home.homeDirectory}/nix-config/scripts/cppdev.sh";
   };
 in
 {

@@ -157,6 +157,7 @@
     wl-clipboard
 
     home-manager
+
     firefox
     chromium
     librewolf
@@ -268,6 +269,9 @@
       STOP_CHARGE_THRESH_BAT0 = 80;
     };
   };
+
+
+
   system.stateVersion = "25.05";
 
 }
