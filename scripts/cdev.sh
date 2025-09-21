@@ -3,6 +3,7 @@ set -e
 
 if [ -f flake.nix ]; then
     echo "⚠️  flake.nix already exists"
+    echo "don't forget \"git add flake.nix\" if this file didn't added to git"
     exit 1
 fi
 
@@ -49,5 +50,7 @@ cat > flake.nix << 'EOF'
     });
 }
 EOF
+
+git add "flake.nix"
 
 echo "✅ Created flake.nix for C project"
