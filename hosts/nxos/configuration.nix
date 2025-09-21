@@ -172,6 +172,8 @@
 
     libreoffice-qt6-fresh
 
+    tor
+    unixtools.netstat
     ffmpeg
     atuin
     fzf
