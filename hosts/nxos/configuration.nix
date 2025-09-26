@@ -251,6 +251,7 @@
 
     smartmontools
     yt-dlp
+    exercism
   ];
 
   programs.steam = {

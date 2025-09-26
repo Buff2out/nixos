@@ -61,6 +61,7 @@ in
       vadimcn.vscode-lldb
       mechatroner.rainbow-csv
       bradlc.vscode-tailwindcss
+      ziglang.vscode-zig
     ];
   };
 
