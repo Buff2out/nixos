@@ -40,6 +40,7 @@ cat > flake.nix << 'EOF'
         inherit buildInputs;
 
         shellHook = ''
+          export PATH="$HOME/.cargo/bin:$PATH"
           echo "✅ C Project Dev Environment Loaded"
           echo "🔧 Available tools:"
           echo "   - gcc, make, clang-format"

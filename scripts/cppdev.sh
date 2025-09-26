@@ -53,6 +53,7 @@ cat > flake.nix << 'EOF'
         CXX = "${pkgs.clang}/bin/clang++";
 
         shellHook = ''
+          export PATH="$HOME/.cargo/bin:$PATH"
           echo "🚀 C++ Development Environment (Clang Edition)"
           echo "📎 Available tools:"
           echo "   - cmake: $(cmake --version | head -n1)"
