@@ -16,6 +16,7 @@ let
 
     cdev = "bash ${config.home.homeDirectory}/nix-config/scripts/cdev.sh";
     cppdev = "bash ${config.home.homeDirectory}/nix-config/scripts/cppdev.sh";
+    rsdev = "bash ${config.home.homeDirectory}/nix-config/scripts/rsdev.sh";
   };
 in
 {
