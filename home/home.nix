@@ -51,18 +51,19 @@ in
     mutableExtensionsDir = true;  # Эта опция должна помочь
     extensions = with pkgs.vscode-extensions; [
       # mkhl.direnv
-      ms-vscode.cmake-tools
-      jnoortheen.nix-ide
-      esbenp.prettier-vscode
-      davidanson.vscode-markdownlint
-      formulahendry.code-runner
+      bradlc.vscode-tailwindcss         #
+      ms-vscode.cmake-tools             # cmake-tools
+      jnoortheen.nix-ide                # nix-ide
+      esbenp.prettier-vscode            # prettier
+      davidanson.vscode-markdownlint    # markdown
+      formulahendry.code-runner         #
       llvm-vs-code-extensions.vscode-clangd
       mhutchie.git-graph
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
       mechatroner.rainbow-csv
-      bradlc.vscode-tailwindcss
       ziglang.vscode-zig
+      tamasfe.even-better-toml
     ];
   };
 

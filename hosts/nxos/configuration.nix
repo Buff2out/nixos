@@ -5,7 +5,7 @@
   swapDevices = [
     {
       device = "/swap/swapfile";
-      size = 32 * 1024;
+      size = 16 * 1024;
     }
   ];
 
@@ -152,6 +152,7 @@
     kdePackages.ark
     kdePackages.gwenview
     kdePackages.spectacle
+    kdePackages.korganizer
     hardinfo2
     wayland-utils
     wl-clipboard
