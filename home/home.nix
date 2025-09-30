@@ -64,6 +64,7 @@ in
       mechatroner.rainbow-csv
       ziglang.vscode-zig
       tamasfe.even-better-toml
+      fill-labs.dependi
     ];
   };
 
