@@ -88,26 +88,54 @@ in
     interactiveShellInit = ''
       zoxide init fish | source
       fish_add_path $HOME/.cargo/bin
+      
+      # Starship для fish
+      starship init fish | source
+      
+      # Atuin для fish (если хочешь)
+      atuin init fish | source
     '';
   };
 
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
+    enableFishIntegration = true;  # добавь для fish
     settings = {
+      # Показывай username и hostname
+      username = {
+        show_always = true;
+        style_user = "bold blue";
+        format = "[$user]($style)";
+      };
+      
+      hostname = {
+        ssh_only = false;  # показывать всегда, не только по SSH
+        format = "@[$hostname](bold green) ";
+        disabled = false;
+      };
+      
       directory = {
         truncation_length = 0;
         truncate_to_repo = false;
         style = "bold yellow";
       };
       
-      format = "$all";
+      # Формат: wave@nxos ~/path ❯
+      format = "$username$hostname$directory$git_branch$git_status$character";
+      
       character = {
         success_symbol = "[❯](bold green)";
         error_symbol = "[❯](bold red)";
       };
+      
+      git_branch = {
+        symbol = " ";
+        style = "bold purple";
+      };
     };
   };
+
 
   programs.atuin = {
     enable = true;

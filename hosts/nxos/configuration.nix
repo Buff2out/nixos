@@ -132,6 +132,7 @@
   users.users.wave = {
     isNormalUser = true;
     home = "/home/wave";
+    shell = pkgs.fish;
     extraGroups = [
       "wheel"
       "networkmanager"
@@ -142,6 +143,7 @@
       "video"
     ];
   };
+  programs.fish.enable = true;
 
   environment.systemPackages = with pkgs; [
     kdePackages.discover
