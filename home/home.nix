@@ -24,6 +24,10 @@ in
   home.username = "wave";
   home.homeDirectory = "/home/wave";
   home.stateVersion = "25.05";
+
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+  ];
   
   home.packages = with pkgs; [
     fd
@@ -73,6 +77,7 @@ in
     enableCompletion = true;
     initExtra = ''
       eval "$(zoxide init bash)"
+      export PATH="$HOME/.cargo/bin:$PATH"
     '';
     shellAliases = commonAliases;
   };
@@ -82,6 +87,7 @@ in
     shellAliases = commonAliases;
     interactiveShellInit = ''
       zoxide init fish | source
+      fish_add_path $HOME/.cargo/bin
     '';
   };
 

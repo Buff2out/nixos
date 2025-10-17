@@ -1,3 +1,17 @@
+
+.git/
+.vscode/
+.idea/
+target/
+build/
+dist/
+node_modules/
+*.log
+*.tmp
+*.swp
+*.bak
+.DS_Store
+Thumbs.db
 log.txt
 /target
 Cargo.lock
@@ -8,4 +22,3 @@ src/main.rs
 log-err.txt
 success_log.txt
 err-log.txt
-project.md

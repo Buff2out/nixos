@@ -77,10 +77,6 @@
     jack.enable = true;
   };
 
-  hardware.graphics = {
-    enable = true;
-  };
-
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -105,6 +101,16 @@
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  hardware.graphics = {
+  enable = true;
+  enable32Bit = true;
+  extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
   };
 
   environment.sessionVariables = {
@@ -156,6 +162,9 @@
     hardinfo2
     wayland-utils
     wl-clipboard
+
+    cudatoolkit
+    nv-codec-headers
 
     home-manager
 
