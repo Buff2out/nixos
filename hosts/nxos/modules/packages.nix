@@ -23,6 +23,7 @@
     vlc
     audacity
     obs-studio
+    realesrgan-ncnn-vulkan
     
     # Office
     libreoffice-qt6-fresh
