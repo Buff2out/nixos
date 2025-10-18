@@ -63,6 +63,7 @@
     btrfs-progs
     smartmontools
     yt-dlp
+    qrencode
     
     # Shells
     nushell
