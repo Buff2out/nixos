@@ -5,6 +5,8 @@
     # System tools
     hardinfo2
     home-manager
+
+    android-tools
     
     # Browsers
     firefox
