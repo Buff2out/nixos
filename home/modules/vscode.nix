@@ -20,6 +20,8 @@
       ziglang.vscode-zig
       tamasfe.even-better-toml
       fill-labs.dependi
+      ms-vscode-remote.remote-containers
+      ritwickdey.liveserver
     ];
   };
 }
