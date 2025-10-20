@@ -15,10 +15,17 @@
   # GNOME
   services.desktopManager.gnome.enable = true;
   
-  # SDDM для выбора между окружениями
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
+  # ✅ GDM для красивого login screen (вместо SDDM)
+  services.displayManager = {
+    gdm = {
+      enable = true;
+      wayland = true;
+    };
+    # SDDM отключён, используем GDM
+    sddm.enable = false;
+    
+    # Дефолтная сессия GNOME (можешь сменить на plasma если хочешь)
+    defaultSession = "gnome";
   };
 
   environment.sessionVariables = {
@@ -26,7 +33,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # KDE packages (все актуальные для Plasma 6!)
+    # KDE packages
     kdePackages.discover
     kdePackages.kcalc
     kdePackages.kcharselect
@@ -42,26 +49,26 @@
     kdePackages.gwenview
     kdePackages.spectacle
     kdePackages.korganizer
-    kdePackages.kamoso          # камера (NEW!)
-    kdePackages.elisa           # музыкальный плеер (NEW!)
-    # kdePackages.merkuro       # современный календарь (опционально)
+    kdePackages.kamoso
+    kdePackages.elisa
     
-    # GNOME эквиваленты (все современные!)
-    gnome-software          # аналог Discover
-    gnome-calculator        # аналог KCalc
-    gnome-characters        # аналог KCharSelect
-    gnome-clocks            # аналог KClock
-    gcolor3                 # аналог KColorChooser
-    drawing                 # аналог KolourPaint
-    gnome-logs              # аналог KSystemLog
-    gnome-text-editor       # аналог Kate (заменил gedit в GNOME 42)
-    gnome-console           # аналог Konsole (современная замена gnome-terminal)
-    nautilus                # аналог Dolphin
-    file-roller             # аналог Ark
-    loupe                   # аналог Gwenview (заменил eog в GNOME 45)
-    snapshot                # камера (заменил cheese в GNOME 44)
-    gnome-calendar          # аналог KOrganizer
-    gnome-tweaks            # настройки GNOME
+    # GNOME packages
+    gnome-software
+    gnome-calculator
+    gnome-characters
+    gnome-clocks
+    gcolor3
+    drawing
+    gnome-logs
+    gnome-text-editor
+    gnome-console
+    nautilus
+    file-roller
+    loupe
+    snapshot
+    gnome-calendar
+    gnome-tweaks
+    gnome-screenshot  # ✅ для скриншотов
     
     wayland-utils
     wl-clipboard
@@ -71,12 +78,12 @@
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     gnome-connections
-    epiphany      # браузер
-    geary         # почтовый клиент
-    totem         # видеоплеер
+    epiphany
+    geary
+    totem
     gnome-music
     gnome-maps
     gnome-weather
-    cheese        # старая камера (заменена на snapshot)
+    cheese
   ];
 }

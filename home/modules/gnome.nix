@@ -3,7 +3,7 @@
 {
   # Настройки GNOME через dconf
   dconf.settings = {
-    # Смена раскадки на Alt+Shift
+    # Смена раскладки на Alt+Shift
     "org/gnome/desktop/wm/keybindings" = {
       switch-input-source = ["<Shift>Alt_L"];
       switch-input-source-backward = ["<Alt>Shift_L"];
@@ -16,17 +16,40 @@
       repeat = true;
     };
     
-    # Ctrl+Alt+T для терминала
+    # ✅ Скриншоты через Spectacle (KDE tool работает в GNOME!)
     "org/gnome/settings-daemon/plugins/media-keys" = {
+      # Отключить встроенные GNOME скриншоты
+      screenshot = [];
+      area-screenshot = [];
+      window-screenshot = [];
+      screencast = [];
+      
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
       ];
     };
     
+    # Ctrl+Alt+T для терминала
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       name = "Open Terminal";
-      command = "gnome-console";  # ✅ современный терминал
+      command = "${pkgs.gnome-console}/bin/kgx";
       binding = "<Control><Alt>t";
+    };
+    
+    # ✅ PrtScr = сохранить в файл (полный экран)
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      name = "Screenshot with Flameshot";
+      command = "${pkgs.flameshot}/bin/flameshot gui";
+      binding = "<Shift>Print";
+    };
+
+    # Shift+PrtScr = сохранить полный экран
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      name = "Screenshot Full Screen";
+      command = "${pkgs.flameshot}/bin/flameshot full -p ~/Pictures/Screenshots/";
+      binding = "Print";
     };
   };
   
@@ -57,9 +80,9 @@
     ".config/autostart/gnome-console.desktop".text = ''
       [Desktop Entry]
       Type=Application
-      Name=Terminal
-      Exec=${pkgs.gnome-console}/bin/gnome-console
-      Icon=utilities-terminal
+      Name=Console
+      Exec=${pkgs.gnome-console}/bin/kgx
+      Icon=org.gnome.Console
       Terminal=false
       Categories=System;TerminalEmulator;
       X-GNOME-Autostart-enabled=true
