@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, kwin-effects-forceblur, ... }:  # ← Добавить сюда!
 
 {
   imports = [
@@ -16,9 +16,15 @@
     ./modules/packages.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
+  # Разрешение конфликта SSH askPassword между KDE и GNOME
   programs.ssh.askPassword = lib.mkForce "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
 
-  nixpkgs.config.allowUnfree = true;
+  # Добавить Better Blur для KDE Wayland
+  environment.systemPackages = [
+    kwin-effects-forceblur.packages.${pkgs.system}.default
+  ];
 
   # Swap
   swapDevices = [

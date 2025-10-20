@@ -15,6 +15,7 @@
   # GNOME
   services.desktopManager.gnome.enable = true;
   
+  # SDDM для выбора между окружениями
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
@@ -25,7 +26,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # KDE packages
+    # KDE packages (все актуальные для Plasma 6!)
     kdePackages.discover
     kdePackages.kcalc
     kdePackages.kcharselect
@@ -41,8 +42,11 @@
     kdePackages.gwenview
     kdePackages.spectacle
     kdePackages.korganizer
+    kdePackages.kamoso          # камера (NEW!)
+    kdePackages.elisa           # музыкальный плеер (NEW!)
+    # kdePackages.merkuro       # современный календарь (опционально)
     
-    # GNOME эквиваленты
+    # GNOME эквиваленты (все современные!)
     gnome-software          # аналог Discover
     gnome-calculator        # аналог KCalc
     gnome-characters        # аналог KCharSelect
@@ -50,11 +54,12 @@
     gcolor3                 # аналог KColorChooser
     drawing                 # аналог KolourPaint
     gnome-logs              # аналог KSystemLog
-    gnome-text-editor       # аналог Kate
-    gnome-console           # аналог Konsole
+    gnome-text-editor       # аналог Kate (заменил gedit в GNOME 42)
+    gnome-console           # аналог Konsole (современная замена gnome-terminal)
     nautilus                # аналог Dolphin
     file-roller             # аналог Ark
-    loupe                   # аналог Gwenview
+    loupe                   # аналог Gwenview (заменил eog в GNOME 45)
+    snapshot                # камера (заменил cheese в GNOME 44)
     gnome-calendar          # аналог KOrganizer
     gnome-tweaks            # настройки GNOME
     
@@ -72,5 +77,6 @@
     gnome-music
     gnome-maps
     gnome-weather
+    cheese        # старая камера (заменена на snapshot)
   ];
 }

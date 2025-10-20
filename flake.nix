@@ -12,9 +12,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Добавить flake для Better Blur
+    kwin-effects-forceblur = {
+      url = "github:taj-ny/kwin-effects-forceblur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, kwin-effects-forceblur, ... }:
     let
       system = "x86_64-linux";
       pkgs-stable = nixpkgs-stable.legacyPackages.${system};
@@ -22,7 +27,10 @@
     {
       nixosConfigurations.nxos = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit pkgs-stable; };
+        specialArgs = { 
+          inherit pkgs-stable;
+          inherit kwin-effects-forceblur;  # Передать в конфигурацию
+        };
         modules = [
           ./hosts/nxos/configuration.nix
           home-manager.nixosModules.home-manager
@@ -30,7 +38,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.wave = import ./home/home.nix;  # Вот здесь подключается home.nix
+              users.wave = import ./home/home.nix;
             };
           }
         ];
