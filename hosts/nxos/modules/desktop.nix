@@ -36,6 +36,9 @@
     kdePackages.gwenview
     kdePackages.spectacle
     kdePackages.korganizer
+    kdePackages.kamoso
+    kdePackages.elisa
+    
     wayland-utils
     wl-clipboard
   ];
