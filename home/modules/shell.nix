@@ -11,9 +11,18 @@ in
       eval "$(zoxide init bash)"
       eval "$(starship init bash)"
       export PATH="$HOME/.cargo/bin:$PATH"
+      
+      # Настройка readline для умного удаления слов
+      # Alt+Backspace удаляет до /, _, или пробела
+      bind '"\e\x7f": backward-kill-word'
+      
+      # Alt+Left/Right для навигации по словам
+      bind '"\e[1;3D": backward-word'
+      bind '"\e[1;3C": forward-word'
     '';
     shellAliases = aliases.commonAliases;
   };
+
 
   programs.fish = {
     enable = true;

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:  # ← Добавить сюда!
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
@@ -17,6 +17,9 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  # ✅ Это критично для применения dconf настроек!
+  services.dbus.packages = [ pkgs.dconf ];
 
   # Разрешение конфликта SSH askPassword между KDE и GNOME
   programs.ssh.askPassword = lib.mkForce "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";

@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  # Настройки GNOME через dconf
   dconf.settings = {
     # Смена раскладки на Alt+Shift
     "org/gnome/desktop/wm/keybindings" = {
@@ -16,39 +15,36 @@
       repeat = true;
     };
     
-    # ✅ Скриншоты через Spectacle (KDE tool работает в GNOME!)
+    # ✅ ПРОСТО МЕНЯЕМ МЕСТАМИ шорткаты GNOME Shell Screenshot UI!
+    "org/gnome/shell/keybindings" = {
+      # По умолчанию: Print = интерактивный UI
+      # Меняем на: Shift+Print = интерактивный UI (область)
+      show-screenshot-ui = ["<Shift>Print"];
+      
+      # Отключаем старые deprecated шорткаты
+      screenshot = [];
+      screenshot-window = [];
+      show-screen-recording-ui = ["<Control><Shift><Alt>r"];  # Оставляем запись экрана
+    };
+    
+    # ✅ Print = сохранить весь экран сразу (не через UI, а напрямую)
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      # Отключить встроенные GNOME скриншоты
+      # Отключаем все старые
       screenshot = [];
       area-screenshot = [];
       window-screenshot = [];
-      screencast = [];
       
+      # Добавляем свой для Print
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
       ];
     };
     
-    # Ctrl+Alt+T для терминала
+    # ✅ Print = полный экран -> автосохранение в ~/Pictures/Screenshots
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      name = "Open Terminal";
-      command = "${pkgs.gnome-console}/bin/kgx";
-      binding = "<Control><Alt>t";
-    };
-    
-    # ✅ PrtScr = сохранить в файл (полный экран)
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      name = "Screenshot with Flameshot";
-      command = "${pkgs.flameshot}/bin/flameshot gui";
-      binding = "<Shift>Print";
-    };
-
-    # Shift+PrtScr = сохранить полный экран
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-      name = "Screenshot Full Screen";
-      command = "${pkgs.flameshot}/bin/flameshot full -p ~/Pictures/Screenshots/";
+      name = "Full Screen Screenshot";
+      # Используем встроенный gnome-screenshot -f для полного экрана
+      command = "sh -c 'mkdir -p ~/Pictures/Screenshots && gnome-screenshot -f ~/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png'";
       binding = "Print";
     };
   };
@@ -59,7 +55,7 @@
       [Desktop Entry]
       Type=Application
       Name=Firefox
-      Exec=${pkgs.firefox}/bin/firefox
+      Exec=firefox
       Icon=firefox
       Terminal=false
       Categories=Network;WebBrowser;
@@ -70,7 +66,7 @@
       [Desktop Entry]
       Type=Application
       Name=Rocket.Chat
-      Exec=${pkgs.rocketchat-desktop}/bin/rocketchat-desktop
+      Exec=rocketchat-desktop
       Icon=rocketchat-desktop
       Terminal=false
       Categories=Network;InstantMessaging;
@@ -81,7 +77,7 @@
       [Desktop Entry]
       Type=Application
       Name=Console
-      Exec=${pkgs.gnome-console}/bin/kgx
+      Exec=kgx
       Icon=org.gnome.Console
       Terminal=false
       Categories=System;TerminalEmulator;

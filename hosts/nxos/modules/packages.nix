@@ -14,8 +14,6 @@
     librewolf
     vivaldi
     tor-browser
-
-    flameshot
     
     # Editors
     mandoc
