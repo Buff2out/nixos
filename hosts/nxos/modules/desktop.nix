@@ -9,7 +9,12 @@
     };
   };
 
+  # KDE Plasma 6
   services.desktopManager.plasma6.enable = true;
+  
+  # GNOME
+  services.desktopManager.gnome.enable = true;
+  
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
@@ -19,8 +24,8 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  # KDE packages
   environment.systemPackages = with pkgs; [
+    # KDE packages
     kdePackages.discover
     kdePackages.kcalc
     kdePackages.kcharselect
@@ -36,7 +41,36 @@
     kdePackages.gwenview
     kdePackages.spectacle
     kdePackages.korganizer
+    
+    # GNOME эквиваленты
+    gnome-software          # аналог Discover
+    gnome-calculator        # аналог KCalc
+    gnome-characters        # аналог KCharSelect
+    gnome-clocks            # аналог KClock
+    gcolor3                 # аналог KColorChooser
+    drawing                 # аналог KolourPaint
+    gnome-logs              # аналог KSystemLog
+    gnome-text-editor       # аналог Kate
+    gnome-console           # аналог Konsole
+    nautilus                # аналог Dolphin
+    file-roller             # аналог Ark
+    loupe                   # аналог Gwenview
+    gnome-calendar          # аналог KOrganizer
+    gnome-tweaks            # настройки GNOME
+    
     wayland-utils
     wl-clipboard
+  ];
+  
+  # Отключить ненужные GNOME приложения
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-connections
+    epiphany      # браузер
+    geary         # почтовый клиент
+    totem         # видеоплеер
+    gnome-music
+    gnome-maps
+    gnome-weather
   ];
 }

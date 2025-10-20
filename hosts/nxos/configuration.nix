@@ -16,6 +16,8 @@
     ./modules/packages.nix
   ];
 
+  programs.ssh.askPassword = lib.mkForce "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+
   nixpkgs.config.allowUnfree = true;
 
   # Swap
