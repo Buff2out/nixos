@@ -12,9 +12,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, plasma-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs-stable = nixpkgs-stable.legacyPackages.${system};
@@ -30,7 +35,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.wave = import ./home/home.nix;  # Вот здесь подключается home.nix
+              users.wave = import ./home/home.nix;
+              # ИСПРАВЛЕНО: homeManagerModules -> homeModules
+              sharedModules = [ plasma-manager.homeModules.plasma-manager ];
             };
           }
         ];
