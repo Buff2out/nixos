@@ -5,7 +5,12 @@
     
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "battery"],
+    "modules-right": ["hyprland/language", "pulseaudio", "network", "battery"],
+    
+    "hyprland/language": {
+        "format": "{short}",
+        "interval": 1
+    },
     
     "clock": {
         "format": "{:%H:%M  %d.%m.%Y}",
@@ -34,9 +39,7 @@
     "pulseaudio": {
         "format": "{volume}% {icon}",
         "format-muted": "婢",
-        "format-icons": {
-            "default": ["", "", ""]
-        },
+        "format-icons": ["", "", ""],
         "on-click": "pavucontrol"
     }
 }

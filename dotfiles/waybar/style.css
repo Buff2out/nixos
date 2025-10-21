@@ -21,3 +21,9 @@ window#waybar {
     padding: 0 10px;
     color: #50fa7b;
 }
+
+#language {
+    padding: 0 10px;
+    color: #ff79c6;
+    font-weight: bold;
+}

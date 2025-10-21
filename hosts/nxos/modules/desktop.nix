@@ -16,11 +16,13 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
         user = "greeter";
       };
     };
   };
+
+  security.pam.services.greetd.enable = true;
 
   # Synthwave тема для tuigreet
   environment.etc."greetd/tuigreet.toml".text = ''
@@ -40,6 +42,7 @@
   services.blueman.enable = true;
 
   environment.systemPackages = with pkgs; [
+    tuigreet
     blueman
     kdePackages.sddm-kcm     # ← ИСПРАВЛЕНО: добавлен kdePackages
     
@@ -62,7 +65,9 @@
     hyprsunset
 
     nautilus
-    dolphin
+    kdePackages.dolphin
+
+    cliphist
 
     brightnessctl     # яркость
     pavucontrol       # GUI для управления звуком

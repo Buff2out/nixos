@@ -5,7 +5,7 @@
     enable = true;
     package = pkgs.vscode;
     mutableExtensionsDir = true;
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       bradlc.vscode-tailwindcss
       ms-vscode.cmake-tools
       jnoortheen.nix-ide
