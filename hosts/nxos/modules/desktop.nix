@@ -12,18 +12,30 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  services.displayManager.sddm = {
+  services.greetd = {
     enable = true;
-    wayland.enable = true;
-    theme = "breeze";
-    
-    # Настройки темы
     settings = {
-      General = {
-        Background = "/home/wave/Pictures/wallpapers/retrowave/wp2343900-synthwave-wallpapers.png";
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        user = "greeter";
       };
     };
   };
+
+  # Synthwave тема для tuigreet
+  environment.etc."greetd/tuigreet.toml".text = ''
+    [general]
+    greeting = "Welcome to NixOS"
+    
+    [style]
+    container_background = "#282a36"
+    text_color = "#f8f8f2"
+    prompt_color = "#ff79c6"
+    time_color = "#bd93f9"
+    action_color = "#50fa7b"
+    button_background = "#44475a"
+    button_foreground = "#f8f8f2"
+  '';
 
   services.blueman.enable = true;
 
@@ -35,6 +47,8 @@
     wofi                # лаунчер
     swaylock            # блокировка экрана
     swayidle            # управление простоями
+
+    networkmanagerapplet
     
     hyprlock
     hyprpaper           # обои
@@ -48,6 +62,7 @@
     hyprsunset
 
     nautilus
+    dolphin
 
     brightnessctl     # яркость
     pavucontrol       # GUI для управления звуком

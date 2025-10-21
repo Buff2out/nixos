@@ -1,0 +1,23 @@
+* {
+    font-family: "Fira Code", monospace;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: rgba(40, 42, 54, 0.9);
+    color: #f8f8f2;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #bd93f9;
+}
+
+#workspaces button.active {
+    color: #ff79c6;
+}
+
+#clock, #battery, #network, #pulseaudio {
+    padding: 0 10px;
+    color: #50fa7b;
+}
