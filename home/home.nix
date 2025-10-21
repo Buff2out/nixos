@@ -6,7 +6,6 @@
     ./modules/cli-tools.nix
     ./modules/shell.nix
     ./modules/vscode.nix
-    # ./modules/kde.nix  
   ];
 
   nixpkgs.config.allowUnfree = true;
