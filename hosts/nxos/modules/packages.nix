@@ -35,6 +35,7 @@
     unixtools.netstat
     
     # CLI Tools
+    rust-analyzer
     ffmpeg
     atuin
     fzf
