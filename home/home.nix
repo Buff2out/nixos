@@ -7,8 +7,6 @@
     ./modules/shell.nix
     ./modules/vscode.nix
   ];
-
-  nixpkgs.config.allowUnfree = true;
   
   home.username = "wave";
   home.homeDirectory = "/home/wave";
