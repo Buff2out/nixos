@@ -14,4 +14,11 @@
       };
     };
   };
+
+  systemd.services."rfkill-unblock-bluetooth" = {
+    description = "Unblock Bluetooth";
+    after = [ "bluetooth.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.ExecStart = "${pkgs.rfkill}/bin/rfkill unblock bluetooth";
+  };
 }
