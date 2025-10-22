@@ -14,6 +14,7 @@
     ./modules/locale.nix
     ./modules/battery.nix
     ./modules/packages.nix
+    ./modules/wallpaper.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
