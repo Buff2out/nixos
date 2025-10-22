@@ -54,7 +54,6 @@
     networkmanagerapplet
     
     hyprlock
-    hyprpaper           # обои
     mako                # уведомления
     grim                # скриншоты
     slurp               # выбор области

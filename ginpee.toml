@@ -6,4 +6,14 @@ text = ""
 text = ""
 
 [files]
-include = ["*.nix", "*.sh"]
+include = [
+    "desktop.nix", 
+    "wallpaper.nix", 
+    "configuration.nix", 
+    "packages.nix", 
+    "home.nix", 
+    "*.sh", 
+    "Cargo.toml", 
+    "*.rs",
+    "*.conf"
+]
