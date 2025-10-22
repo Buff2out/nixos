@@ -19,6 +19,6 @@
     description = "Unblock Bluetooth";
     after = [ "bluetooth.service" ];
     wantedBy = [ "multi-user.target" ];
-    serviceConfig.ExecStart = "${pkgs.rfkill}/bin/rfkill unblock bluetooth";
+    serviceConfig.ExecStart = "${pkgs.util-linux}/bin/rfkill unblock bluetooth";  # ← ИСПРАВЛЕНО
   };
 }
