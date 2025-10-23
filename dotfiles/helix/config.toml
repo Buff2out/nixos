@@ -1,1 +1,15 @@
+# ~/.config/helix/config.toml
+
+theme = "synthwave"
+
+[editor]
+line-number = "relative"
+cursorline = true
+auto-save = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
 

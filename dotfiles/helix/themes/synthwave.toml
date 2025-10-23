@@ -1,0 +1,113 @@
+# ~/.config/helix/themes/synthwave.toml
+# SynthWave '84 — Ядовитая версия с максимальным контрастом
+
+"ui.background" = { bg = "#2a243d" }
+"ui.text" = "#f8f8f2"
+
+# Курсор — неоново-розовый
+"ui.cursor.primary" = { fg = "#2a243d", bg = "#ff79c6" }
+"ui.cursor.match" = { fg = "#2a243d", bg = "#bd93f9" }
+
+"ui.selection" = { bg = "#44475a" }
+"ui.linenr" = "#6272a4"
+"ui.linenr.selected" = { fg = "#ff79c6", modifiers = ["bold"] }
+
+"ui.statusline" = { fg = "#f8f8f2", bg = "#3b3251" }
+"ui.statusline.inactive" = { fg = "#6272a4", bg = "#2a243d" }
+
+"ui.popup" = { bg = "#3b3251" }
+"ui.window" = { fg = "#6272a4" }
+"ui.menu" = { fg = "#f8f8f2", bg = "#3b3251" }
+"ui.menu.selected" = { fg = "#ff79c6", bg = "#44475a", modifiers = ["bold"] }
+
+# Синтаксис кода
+"comment" = { fg = "#6272a4", modifiers = ["italic"] }
+
+# Ключевые слова — розовый
+"keyword" = { fg = "#ff79c6", modifiers = ["bold"] }
+"keyword.control" = "#ff79c6"
+"keyword.function" = "#ff79c6"
+"operator" = "#ff79c6"
+
+# Строки — оранжевый (мягкий жёлтый)
+"string" = "#ffbe0b"
+"string.special" = "#f1fa8c"
+
+# Типы — глубокий фиолетовый (trait)
+"type" = "#8c73ff"
+"type.builtin" = { fg = "#8c73ff", modifiers = ["italic"] }
+
+# Структуры — красный
+"constructor" = "#ff5555"
+
+# Константы — тёмно-фиолетовый
+"constant" = "#8c73ff"
+"constant.builtin" = "#8c73ff"
+"constant.numeric" = "#bd93f9"
+"constant.character.escape" = "#ff92df"
+
+# Переменные — ЯДОВИТЫЙ ЖЁЛТЫЙ!
+"variable" = "#f1fa8c"
+"variable.builtin" = { fg = "#f1fa8c", modifiers = ["italic"] }
+"variable.parameter" = { fg = "#f1fa8c", modifiers = ["italic"] }
+
+# Функции — обычные функции остаются бирюзовыми
+"function" = "#8be9fd"
+"function.builtin" = { fg = "#8be9fd", modifiers = ["italic"] }
+"function.macro" = "#50fa7b"
+
+# Методы — ЯДОВИТО-БИРЮЗОВЫЙ!
+"function.method" = "#00ffff"
+
+# Атрибуты — зелёный
+"attribute" = "#50fa7b"
+"label" = "#50fa7b"
+
+# Теги — розовый
+"tag" = "#ff79c6"
+
+# Пунктуация — белый
+"punctuation" = "#f8f8f2"
+"punctuation.bracket" = "#f8f8f2"
+"punctuation.delimiter" = "#f8f8f2"
+
+# Специальные элементы
+"special" = "#ff79c6"
+"namespace" = "#8be9fd"
+
+# Markdown
+"markup.heading" = { fg = "#ff79c6", modifiers = ["bold"] }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.link.url" = { fg = "#8be9fd", underline = { style = "line" } }
+"markup.link.text" = "#50fa7b"
+"markup.quote" = "#6272a4"
+"markup.raw" = "#ffbe0b"
+
+# Диагностика
+"error" = "#ff5555"
+"warning" = "#ffbe0b"
+"info" = "#8be9fd"
+"hint" = "#50fa7b"
+
+# Diff
+"diff.plus" = "#50fa7b"
+"diff.minus" = "#ff5555"
+"diff.delta" = "#ffbe0b"
+
+[palette]
+background = "#2a243d"
+foreground = "#f8f8f2"
+selection = "#44475a"
+comment = "#6272a4"
+
+pink = "#ff79c6"         # Ключевые слова
+orange = "#ffbe0b"       # Строки (мягкий оранжевый)
+neon_yellow = "#dfec53ff"  # Переменные (ЯДОВИТЫЙ!)
+cyan = "#8be9fd"         # Функции
+neon_cyan = "#00ffff"    # Методы (ЯДОВИТЫЙ!)
+green = "#50fa7b"        # Атрибуты
+purple = "#bd93f9"       # Числа
+deep_purple = "#8c73ff"  # Trait (глубокий фиолетовый)
+red = "#ff5555"          # Struct (красный)
+cursor = "#f97e72"       # Курсор

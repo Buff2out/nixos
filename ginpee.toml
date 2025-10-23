@@ -7,7 +7,7 @@ text = ""
 
 [files]
 include = [
-    "*.nix", 
+    # "*.nix", 
     # "wallpaper.nix", 
     # "configuration.nix", 
     # "packages.nix", 
@@ -15,5 +15,6 @@ include = [
     # "*.sh", 
     # "Cargo.toml", 
     # "*.rs",
-    "*.conf"
+    "*.conf",
+    "*.toml"
 ]
