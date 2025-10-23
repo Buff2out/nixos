@@ -29,7 +29,7 @@
         {
           name = "synthwave-vscode";
           publisher = "RobbOwen";
-          version = "0.1.19";
+          version = "0.1.20";
           sha256 = "0lfjgrl7m2aswrj1rj64pgkniq0c9qzghjhsr8pivmsfcq35j39s";
         }
       ];
@@ -47,23 +47,28 @@
         }
       ];
 
-      # Новый, правильный способ управления настройками
       userSettings = {
-        # Отключаем MCP
         "chat.mcp.access" = "none";
         "chat.agent.enabled" = false;
         "chat.commandCenter.enabled" = false;
-        
-        # Отключаем Copilot
         "github.copilot.enable" = false;
         "github.copilot.editor.enableAutoCompletions" = false;
         
-        # Опционально - другие полезные настройки
         "editor.formatOnSave" = true;
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
 
-        # Автоматически включаем нашу тему
         "workbench.colorTheme" = "SynthWave '84";
+
+        "files.autoSave" = "afterDelay";
+        "files.autoSaveDelay" = 1000;  # 1000ms = 1 секунда
+        
+        "git.confirmSync" = false;              # Не спрашивать при sync
+        "git.confirmPush" = false;              # Не спрашивать при push
+        "git.confirmEmptyCommits" = false;      # Не спрашивать про пустые коммиты
+        "git.enableSmartCommit" = true;         # Автоматически stage при коммите
+        "git.postCommitCommand" = "none";       # Не запускать команды после коммита
+        
+        "git.showPushSuccessNotification" = true;  # Показать уведомление об успешном push (опционально)
       };
     };
   };
