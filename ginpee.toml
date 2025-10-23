@@ -7,13 +7,13 @@ text = ""
 
 [files]
 include = [
-    "desktop.nix", 
-    "wallpaper.nix", 
-    "configuration.nix", 
-    "packages.nix", 
-    "home.nix", 
-    "*.sh", 
-    "Cargo.toml", 
-    "*.rs",
+    "*.nix", 
+    # "wallpaper.nix", 
+    # "configuration.nix", 
+    # "packages.nix", 
+    # "home.nix", 
+    # "*.sh", 
+    # "Cargo.toml", 
+    # "*.rs",
     "*.conf"
 ]
