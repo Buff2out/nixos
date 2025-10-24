@@ -28,7 +28,8 @@
     realesrgan-ncnn-vulkan
     
     # Office
-    libreoffice-qt6-fresh
+    libreoffice-fresh
+    pandoc
     
     # Network
     tor
