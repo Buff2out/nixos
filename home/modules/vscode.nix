@@ -9,6 +9,7 @@
     
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
+        ms-vscode.makefile-tools
         bradlc.vscode-tailwindcss
         ms-vscode.cmake-tools
         jnoortheen.nix-ide
