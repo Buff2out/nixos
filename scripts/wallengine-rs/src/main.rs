@@ -29,7 +29,7 @@ fn main() {
     let selected = images.choose(&mut rng).expect("Failed to choose wallpaper");
 
     // Сначала preload нового обоев
-    let preload_output = Command::new("hyprctl")
+    let preload_output = Command::new("/run/current-system/sw/bin/hyprctl")
         .args(&["hyprpaper", "preload", &selected.display().to_string()])
         .output()
         .expect("Failed to preload wallpaper");
@@ -42,14 +42,14 @@ fn main() {
     // Затем установить обои на монитор (БЕЗ пробела после запятой!)
     let wallpaper_arg = format!("eDP-1,{}", selected.display());
 
-    let output = Command::new("hyprctl")
+    let output = Command::new("/run/current-system/sw/bin/hyprctl")
         .args(&["hyprpaper", "wallpaper", &wallpaper_arg])
         .output()
-        .expect("Failed to execute hyprctl");
+        .expect("Failed to execute /run/current-system/sw/bin/hyprctl");
 
     if output.status.success() {
         println!("✅ Wallpaper changed to: {}", selected.display());
     } else {
-        eprintln!("❌ hyprctl failed: {}", String::from_utf8_lossy(&output.stderr));
+        eprintln!("❌ /run/current-system/sw/bin/hyprctl failed: {}", String::from_utf8_lossy(&output.stderr));
     }
 }
